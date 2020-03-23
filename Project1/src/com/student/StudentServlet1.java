@@ -28,8 +28,6 @@ public class StudentServlet1 extends HttpServlet {
 			throws ServletException, IOException {
 
 		pw = response.getWriter();
-		// pw.println("studentservlet par aa gaya");
-
 		try {
 			id = Integer.parseInt(request.getParameter("id"));
 		} catch (Exception e) {
@@ -72,12 +70,6 @@ public class StudentServlet1 extends HttpServlet {
 		StudentCon con = new StudentCon();
 		String[] s = new String[5];
 		s = con.select(id);
-//		 pw.println(s[0]);
-//  	   pw.println(s[1]);
-//  	   pw.println(s[2]);
-//  	   pw.println(s[3]);
-//  	   pw.println(s[4]);
-
 		request.setAttribute("select", s);
 		request.setAttribute("check", "sel");
 		RequestDispatcher rd = request.getRequestDispatcher("StudentView.jsp");
@@ -97,8 +89,6 @@ public class StudentServlet1 extends HttpServlet {
 		request.setAttribute("insert", result);
 		RequestDispatcher rd = request.getRequestDispatcher("StudentView.jsp");
 		rd.include(request, response);
-
-		// pw.println(result);
 		pw.close();
 
 	}
@@ -158,15 +148,11 @@ public class StudentServlet1 extends HttpServlet {
 			StudentBean student = new StudentBean(id, name, address, email, qual);
 			StudentService service = new StudentService();
 			String result = service.updateData(student);
-
-			// pw.println(" servlet ke proceed method main aaya");
-
 			request.setAttribute("check", "upd");
 			request.setAttribute("update", result);
 			RequestDispatcher rd = request.getRequestDispatcher("StudentView.jsp");
 			rd.include(request, response);
 
-			// pw.println(result);
 			pw.close();
 		} catch (Exception e) {
 			e.printStackTrace();
