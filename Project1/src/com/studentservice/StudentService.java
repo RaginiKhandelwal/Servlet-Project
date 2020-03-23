@@ -26,8 +26,7 @@ public class StudentService {
 	}
 
 	public String updateData(StudentBean s) throws Exception {
-		// System.out.println("service ke update data main aaya");
-		StudentCon con = new StudentCon();
+		 StudentCon con = new StudentCon();
 		int status = con.update(s);
 		if (status == 0)
 			return "updation failed";
